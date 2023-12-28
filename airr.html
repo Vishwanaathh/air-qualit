@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            text-align: center;
+            background-color:bisque;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color:brown;
+        }
+    </style>
+</head>
+<body><h1>AIR QUALITY APP<i class="fa-solid fa-cloud"></i></h1><input type="text" id="inp" placeholder="enter latitude"><br><input type="text" id="inp2" placeholder="enter longitude"><br><button onclick="search()">FETCH</button>
+    <h2 id="tell"></h2>
+   <script>
+    let tt=document.getElementById('tell');
+   function search(){
+            var lat=document.getElementById('inp').value;
+            var lon=document.getElementById('inp2').value;
+       var ap= `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=7724debd77ff81e3e067ef8906d6c335`;
+       fetch(ap)
+       .then(response=>{
+        return response.json();
+
+       })
+       .then(data=>{
+        var aq=data["list"][0]["main"]["aqi"];
+        if(aq==1){
+            tt.innerText='Good';
+        }
+        if(aq==2){
+            tt.innerText='Fair';
+
+        }
+        if(aq==3){
+            tt.innerText='Moderate';
+        }
+        if(aq>=4){
+            tt.innerText='BAD' ;
+        }
+       
+
+       })
+    
+    }
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
