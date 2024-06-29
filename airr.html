@@ -22,7 +22,8 @@
    function search(){
             var lat=document.getElementById('inp').value;
             var lon=document.getElementById('inp2').value;
-       var ap= `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=7724debd77ff81e3e067ef8906d6c335`;
+       var ap=`FOR SECURITY REASONS THIS KEY HAS BEEN REMOVED
+       ` ;
        fetch(ap)
        .then(response=>{
         return response.json();
